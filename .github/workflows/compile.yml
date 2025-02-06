@@ -1,9 +1,9 @@
 name: compile program
 
 on:
-    pull_request:
-      branches:
-        - 'main'
+  pull_request:
+    branches:
+      - 'main'
 
 jobs:
   compile-code:
@@ -13,13 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: compile-program
+      - name: compile program
         run: |
           make
-          if [$? -eq 0]; then
-            echo "Compilation Success"
+          if [ $? -eq 0 ]; then
+            echo "Compilation success"
             exit 0
           else
-            echo "Compilation Failed"
+            echo "Compilation failed"
             exit 1
           fi
