@@ -16,12 +16,12 @@ jobs:
 
       - name: pull cs_bin
         run: |
-          wget -q "https://github.com/Epitech/coding-style-checker.git/coding-style.sh"
-          chmod +x coding-style.sh
+          git clone https://github.com/Epitech/coding-style-checker.git
+          chmod +x coding-style-checker/coding-style.sh
 
       - name: exec cs
         run: |
-          coding-style.sh ${{ github.repository }} .
+          coding-style-checker/coding-style.sh ${{ github.repository }} .
 
       - name: check res
         run: |
