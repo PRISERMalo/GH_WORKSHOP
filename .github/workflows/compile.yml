@@ -6,8 +6,8 @@ on:
         - 'main'
 
 jobs:
-    checkCompile:
-    runs-on: ubuntu-latest
+    compile-code:
+      runs-on: ubuntu-latest
 
     steps:
         - name: checkout-code
