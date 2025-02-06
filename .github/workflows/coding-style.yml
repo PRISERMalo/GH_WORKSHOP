@@ -26,10 +26,10 @@ jobs:
       - name: check res
         run: |
           cat coding-style-reports.log | grep C
-          if [ $? -eq 0 ]; then
-            echo "Not Coding Style Compliant"
-            exit 1
-          else
+          if [ $? -eq 1 ]; then
             echo "Coding Style Compliant"
             exit 0
+          else
+            echo "Not Coding Style Compliant"
+            exit 1
           fi
