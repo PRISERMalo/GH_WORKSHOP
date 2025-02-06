@@ -28,8 +28,8 @@ jobs:
           cat coding-style-reports.log | grep C
           if [ $? -eq 0 ]; then
             echo "Not Coding Style Compliant"
-            exit 0
+            exit 1
           else
             echo "Coding Style Compliant"
-            exit 1
+            exit 0
           fi
