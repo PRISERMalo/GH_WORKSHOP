@@ -1,0 +1,34 @@
+name: coding-style-check
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  compile-code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: pull cs_bin
+        run: |
+          wget -q "https://github.com/Epitech/coding-style-checker.git/coding-style.sh"
+          chmod +x coding-style.sh
+
+      - name: exec cs
+        run: |
+          coding-style.sh ${{ github.repository }} .
+
+      - name: check res
+        run: |
+          cat coding-style-reports.log | grep C
+          if [ $? -eq 0 ]; then
+            echo "Not Coding Style Compliant"
+            exit 0
+          else
+            echo "Coding Style Compliant"
+            exit 1
+          fi
